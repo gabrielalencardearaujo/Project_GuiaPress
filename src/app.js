@@ -4,6 +4,9 @@ const routes = require('./routes');
 const bodyParser = require('body-parser');
 const connection = require('@database/database');
 
+const ArticleModel = require('./controllers/articles/ArticleModel.js')
+const CategoryModel = require('./controllers/categories/CategoryModel.js')
+
 // Use view engine .ejs 
 app.set('view engine', 'ejs');
 
