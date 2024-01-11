@@ -14,7 +14,7 @@ const AdminController = {
         title,
         slug: Slugify(title, { lower: true })
       }).then(() => {
-        res.redirect('/')
+        res.redirect('/admin/categories/')
       })
     } else {
       res.redirect('/admin/categories/new.ejs')
@@ -30,6 +30,24 @@ const AdminController = {
       })
       
     })
+  },
+
+  delete(req, res) {
+    const {id} = req.body;
+
+    if(id && !isNaN(id)) {
+      //Deletar info no banco de dados que possua o mesmo id da variavel id:
+      CategoryModel.destroy({
+        where: {
+          id: id
+        }
+      }).then(()=> {
+        res.redirect('/admin/categories/')
+      })
+
+    } else {
+      res.redirect('/admin/categories/')
+    }
   }
 }
 

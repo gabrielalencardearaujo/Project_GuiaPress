@@ -11,11 +11,12 @@ router.get('/', TestController.helloWorld);
 router.get('/categories', CateControllers.home);
 
 // Routers Articles
-router.get('/articles', ArtControllers.home)
+router.get('/articles', ArtControllers.home);
 
 //Rotas Admin
-router.get('/admin/categories/new', AdminController.newCategory)
-router.post('/admin/categories/save', AdminController.save)
-router.get('/admin/categories/', AdminController.categories)
+router.get('/admin/categories/', AdminController.categories);
+router.get('/admin/categories/new', AdminController.newCategory);
+router.post('/admin/categories/save', AdminController.save);
+router.post('/admin/categories/delete', AdminController.delete);
 
 module.exports = router;
