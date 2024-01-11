@@ -5,6 +5,7 @@
       <section class="container">
         <hr>
         <h2>Categorias</h2>
+        <a href="/admin/categories/new" class="btn btn-success">Nova Categoria</a>
         <hr>
 
         <table class="table ">
@@ -22,7 +23,10 @@
                 <td><%= category.id %></td>
                 <td><%= category.title %></td>
                 <td><%= category.slug %></td>
-                <td></td>
+                <td>
+                  <button class="btn btn-warning">Editar</button>
+                  <button class="btn btn-danger">Deletar</button>
+                </td>
               </tr>
             <% }) %>
           </tbody>
