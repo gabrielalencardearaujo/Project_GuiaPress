@@ -20,24 +20,42 @@
           <tbody>
             <% categories.forEach(category=> { %>
               <tr>
-                <td><%= category.id %></td>
-                <td><%= category.title %></td>
-                <td><%= category.slug %></td>
+                <td>
+                  <%= category.id %>
+                </td>
+                <td>
+                  <%= category.title %>
+                </td>
+                <td>
+                  <%= category.slug %>
+                </td>
                 <td>
 
                   <button class="btn btn-warning">Editar</button>
-                  
-                  <form action="/admin/categories/delete" method="POST" style="display: inline;">
+
+                  <form action="/admin/categories/delete" method="POST" style="display: inline;" onsubmit="confirmDeleteCategory(event)">
                     <input type="hidden" name="id" value="<%= category.id %>">
                     <button class="btn btn-danger">Deletar</button>
                   </form>
                 </td>
               </tr>
-            <% }) %>
+              <% }) %>
           </tbody>
         </table>
       </section>
 
+      <script>
+        function confirmDeleteCategory(event) {
+          event.preventDefault();
+          console.log('O formulario nao foi enviado.')
+          const confirmCategory = confirm('Deseja deletar essa categoria?')
+
+          if(confirmCategory) {
+            event.target.submit();
+          } 
+          
+        }
+      </script>
   </body>
 
   <%- include('../../partials/footer.ejs') %>
