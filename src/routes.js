@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const TestController = require('@controllers/controllers.js');
 const CateControllers = require('@controllers/categories/CategoriesController.js');
-const ArtControllers = require('@controllers/articles/ArticleController.js');
+const AdminController = require('@controllers/admin/AdminArticles.js');
 const AdminCategories = require('@controllers/admin/AdminCategories.js');
 const ArticleModel = require('./controllers/articles/ArticleModel');
 
@@ -12,9 +12,9 @@ router.get('/', TestController.helloWorld);
 router.get('/categories', CateControllers.home);
 
 // Routers Articles
-router.get('/admin/articles', ArtControllers.home);
-router.get('/admin/articles/new', ArtControllers.new)
-router.post('/admin/articles/save', ArtControllers.save)
+router.get('/admin/articles', AdminController.home);
+router.get('/admin/articles/new', AdminController.new)
+router.post('/admin/articles/save', AdminController.save)
 
 //Rotas Admin
 router.get('/admin/categories/', AdminCategories.categories);

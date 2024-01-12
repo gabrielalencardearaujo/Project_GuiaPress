@@ -4,36 +4,9 @@ const Slugify = require('slugify');
 
 const Controllers = {
   home(req, res) {
-    ArticleModel.findAll({
-      include: [{model: CategoryModel}] // Incluindo os dados da tabela categorias (equivalente ao uso do JOIN)
-    }).then(articles => {
-      res.render('admin/articles/index', {articles})
-    })
+    res.send('Pagina de artigos para o usuario')
   },
 
-  new(req, res) {
-    CategoryModel.findAll().then(categories => {      
-      res.render('admin/articles/new', { categories })
-    })
-  },
-
-  save(req, res) {
-    const { title, body, categoryID } = req.body;
-
-    ArticleModel.create({
-      title,
-      slug: Slugify(title, { lower: true }),
-      body,
-      categoriaId: categoryID,
-    })
-    .then(() => {
-      res.redirect('/admin/articles')
-    })
-    .catch(err => {
-      alert('Erro ao tentar criar o artigo.')
-      res.redirect('/admin/articles/new');
-    })
-  }
 }
 
 module.exports = Controllers;
