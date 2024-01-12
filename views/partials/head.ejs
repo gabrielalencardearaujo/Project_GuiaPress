@@ -6,4 +6,18 @@
   <title>GuiaPress</title>
 
   <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <script src="/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>
+    tinymce.init({
+      selector: '#mytextarea',
+      plugins: [
+        'advlist table autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save paste emoticons'
+      ],
+      table_toolbar: 'table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol',
+      language: 'pt_BR',
+    });
+  </script>
+  <script>
+
+  </script>
 </head>
