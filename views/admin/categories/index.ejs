@@ -2,6 +2,7 @@
 
   <body>
     <%- include('../../partials/navbar.ejs') %>
+    
       <section class="container">
         <hr>
         <h2>Categorias</h2>
@@ -31,7 +32,7 @@
                 </td>
                 <td>
 
-                  <button class="btn btn-warning">Editar</button>
+                  <a href="/admin/categories/update/<%= category.id %>" class="btn btn-warning">Editar</a>
 
                   <form action="/admin/categories/delete" method="POST" style="display: inline;" onsubmit="confirmDeleteCategory(event)">
                     <input type="hidden" name="id" value="<%= category.id %>">
@@ -53,7 +54,7 @@
           if(confirmCategory) {
             event.target.submit();
           } 
-          
+
         }
       </script>
   </body>
