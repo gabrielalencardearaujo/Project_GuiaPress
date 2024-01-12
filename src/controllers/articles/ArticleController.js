@@ -4,13 +4,16 @@ const Slugify = require('slugify');
 
 const Controllers = {
   home(req, res) {
-    res.render('admin/articles/index')
+    ArticleModel.findAll({
+      include: [{model: CategoryModel}] // Incluindo os dados da tabela categorias (equivalente ao uso do JOIN)
+    }).then(articles => {
+      res.render('admin/articles/index', {articles})
+    })
   },
 
   new(req, res) {
-    CategoryModel.findAll().then(categories => {
+    CategoryModel.findAll().then(categories => {      
       res.render('admin/articles/new', { categories })
-
     })
   },
 
