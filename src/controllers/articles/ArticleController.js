@@ -22,8 +22,13 @@ const Controllers = {
       slug: Slugify(title, { lower: true }),
       body,
       categoriaId: categoryID,
-    }).then(() => {
-      res.redirect('/admin/categories')
+    })
+    .then(() => {
+      res.redirect('/admin/articles')
+    })
+    .catch(err => {
+      alert('Erro ao tentar criar o artigo.')
+      res.redirect('/admin/articles/new');
     })
   }
 }
