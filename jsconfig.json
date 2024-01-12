@@ -6,7 +6,7 @@
     "paths": {
       "@app/*": ["src/*"],
       "@config/*": ["src/config/*"],
-      "@controller/*": ["src/controller/*"],
+      "@controllers/*": ["src/controller/*"],
       "@database/*": ["database/*"]
     }
   },

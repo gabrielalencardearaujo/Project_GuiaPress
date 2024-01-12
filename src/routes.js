@@ -14,6 +14,7 @@ router.get('/categories', CateControllers.home);
 // Routers Articles
 router.get('/articles', ArtControllers.home);
 router.get('/admin/articles/new', ArtControllers.new)
+router.post('/admin/articles/save', ArtControllers.save)
 
 //Rotas Admin
 router.get('/admin/categories/', AdminController.categories);
