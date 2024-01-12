@@ -1,7 +1,7 @@
 const CategoryModel = require('../categories/CategoryModel');
 const Slugify = require('slugify');
 
-const AdminController = {
+const AdminCategories = {
   newCategory(req, res) {
     res.render('admin/categories/new.ejs', { category: null })
   },
@@ -82,4 +82,4 @@ const AdminController = {
   }
 }
 
-module.exports = AdminController;
+module.exports = AdminCategories;
