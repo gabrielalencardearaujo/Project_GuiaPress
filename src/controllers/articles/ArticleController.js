@@ -4,7 +4,7 @@ const Slugify = require('slugify');
 
 const Controllers = {
   home(req, res) {
-    res.send('Pagina de articles.')
+    res.render('admin/articles/index')
   },
 
   new(req, res) {
