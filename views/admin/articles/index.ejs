@@ -1,0 +1,44 @@
+<%- include('../../partials/head.ejs') %>
+
+<body>
+  <%- include('../../partials/navbar.ejs') %>
+  
+    <section class="container">
+      <hr>
+      <h2>Artigos</h2>
+      <a href="/admin/articles/new" class="btn btn-success">
+        Criar Novo Artigo
+      </a>
+      <hr>
+
+      <table class="table ">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Titulo</th>
+            <th>Slug</th>
+            <th>Categoria</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+    </section>
+
+    <script>
+      function confirmDeleteCategory(event) {
+        event.preventDefault();
+        console.log('O formulario nao foi enviado.')
+        const confirmCategory = confirm('Deseja deletar essa categoria?')
+
+        if(confirmCategory) {
+          event.target.submit();
+        } 
+
+      }
+    </script>
+</body>
+
+<%- include('../../partials/footer.ejs') %>
