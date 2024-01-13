@@ -9,7 +9,7 @@ const AdminCategories = require('@controllers/admin/AdminCategories.js');
 router.get('/', HomeController.home);
 
 // Routers Categories
-router.get('/categories', CateControllers.home);
+router.get('/category/:slug', CateControllers.categoryPage);
 
 // Routers Articles:
 router.get('/article/:slug', ArtControllers.articlePage);
