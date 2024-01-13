@@ -33,7 +33,25 @@ const Controllers = {
       alert('Erro ao tentar criar o artigo.')
       res.redirect('/admin/articles/new');
     })
-  }
+  },
+
+  delete(req, res) {
+    const { id } = req.body;
+
+    if (id && !isNaN(id)) {
+      //Deletar o artigo no banco de dados que possua o mesmo id da variavel id:
+      ArticleModel.destroy({
+        where: {
+          id: id
+        }
+      }).then(() => {
+        res.redirect('/admin/articles')
+      })
+
+    } else {
+      res.redirect('/admin/articles')
+    }
+  },
 }
 
 module.exports = Controllers;

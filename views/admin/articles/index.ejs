@@ -28,7 +28,12 @@
               <td><%= article.title %></td>
               <td><%= article.slug %></td>
               <td><%= article.categoria.title  %></td>
-              <td></td>
+              <td>
+                <form action="/admin/articles/delete" method="POST" style="display: inline;" onsubmit="confirmDeleteCategory(event)">
+                  <input type="hidden" name="id" value="<%= article.id %>">
+                  <button class="btn btn-danger">Deletar</button>
+                </form>
+            </td>
             </tr>
           <% }) %>
         </tbody>
@@ -39,7 +44,7 @@
       function confirmDeleteCategory(event) {
         event.preventDefault();
         console.log('O formulario nao foi enviado.')
-        const confirmCategory = confirm('Deseja deletar essa categoria?')
+        const confirmCategory = confirm('Deseja deletar este artigo?')
 
         if(confirmCategory) {
           event.target.submit();
