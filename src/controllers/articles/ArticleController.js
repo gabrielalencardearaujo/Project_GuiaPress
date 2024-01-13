@@ -11,7 +11,9 @@ const Controllers = {
     })
     .then(article => {
       if(article)
-        res.render('pages/articlePage', {article});
+        CategoryModel.findAll().then(categories => {
+          res.render('pages/articlePage', {article, categories});
+        })
       else 
         res.render('/')
     })

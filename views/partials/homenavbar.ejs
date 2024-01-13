@@ -2,10 +2,17 @@
   <a href="/" class="navbar-brand mr-auto">
     GuiaPress
   </a>
-  
+  <ul class="navbar-nav mr-5 flex mr-auto">
+    <% categories.forEach(category => { %>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="/"><%= category.title %></a>
+      </li>
+    <% }) %>
+  </ul>
+
   <ul class="navbar-nav mr-5 flex">
     <li class="nav-item">
-      <a class="nav-link text-light" href="/">Home</a>
+      <a class="nav-link text-light" href="#">Login</a>
     </li>
   </ul>
 </nav>
