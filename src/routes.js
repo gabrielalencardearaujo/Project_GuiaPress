@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const TestController = require('@controllers/controllers.js');
+const HomeController = require('@controllers/HomeController.js');
 const CateControllers = require('@controllers/categories/CategoriesController.js');
 const AdminArticles = require('@controllers/admin/AdminArticles.js');
 const AdminCategories = require('@controllers/admin/AdminCategories.js');
 
 // Routers Home
-router.get('/', TestController.helloWorld);
+router.get('/', HomeController.home);
 
 // Routers Categories
 router.get('/categories', CateControllers.home);
