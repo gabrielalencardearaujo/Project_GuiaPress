@@ -4,43 +4,89 @@
     <%- include('../../partials/navbar.ejs') %>
       <section class="container">
 
-        <div class="card">
-          <div class="card-header">
-            <h2>Novo artigo</h2>
+        <% if(!updateArticle) { %>
+
+          <div class="card">
+            <div class="card-header">
+              <h2>Novo artigo</h2>
+            </div>
+            <div class="card-body">
+              <form action="/admin/articles/save" method="POST">
+
+                <label for="title">Titulo</label>
+                <input class="form-control mb-4" type="text" name="title" placeholder="Define o titulo do artigo"
+                  id="title">
+
+                <label for="selectCategory">Categoria</label>
+                <select class="form-control mb-4" name="categoryID" id="selectCategory" style="display: block;">
+                  <option value=""> --- </option>
+                  <% categories.forEach(category=> { %>
+                    <option value="<%= category.id %>">
+                      <%= category.title %>
+                    </option>
+                    <% })%>
+                </select>
+
+                <label for="body">Texto</label>
+                <textarea class="form-control mb-4" name="body" id="mytextarea" cols="30" rows="10"
+                  placeholder="Escreve o seu artigo aqui.">
+                </textarea>
+
+                <button type="submit" class="btn btn-success mt-4">Criar</button>
+              </form>
+            </div>
           </div>
-          <div class="card-body">
-            <form action="/admin/articles/save" method="POST">
 
-              <label for="title">Titulo</label>
-              <input class="form-control mb-4" type="text" name="title" placeholder="Define o titulo do artigo" id="title">
+          <%} else {%>
+            <div class="card">
+              <div class="card-header">
+                <h2>Atualizar artigo</h2>
+              </div>
+              <div class="card-body">
+                <form action="/admin/articles/update/<%= updateArticle.id %>" method="POST">
 
-              <label for="selectCategory">Categoria</label>
-              <select 
-                class="form-control mb-4" 
-                name="categoryID" 
-                id="selectCategory" 
-                style="display: block;"
-              >
-                <option value=""> --- </option>
-                <% categories.forEach(category => { %>
-                  <option value="<%= category.id %>"><%= category.title %></option>
-                <% })%>
-              </select>
+                  <input 
+                    type="hidden" 
+                    name="idArticle" 
+                    value="<%= updateArticle.id %>"
+                  >
 
-              <label for="body">Texto</label>
-              <textarea 
-                class="form-control mb-4" 
-                name="body" 
-                id="mytextarea" 
-                cols="30" 
-                rows="10"
-                placeholder="Escreve o seu artigo aqui.">
-              </textarea>
+                  <label for="title">Titulo</label>
+                  <input class="form-control mb-4" type="text" name="title" placeholder="Define o titulo do artigo"
+                    id="title" value="<%= updateArticle.title %>">
 
-              <button type="submit" class="btn btn-success mt-4">Atualizar</button>
-            </form>
-          </div>
-        </div>
+                  <label for="selectCategory">Categoria</label>
+                  <select 
+                    class="form-control mb-4" 
+                    name="categoryID" 
+                    id="selectCategory" s
+                    tyle="display: block;"
+                  >
+                    <% categories.forEach(category=> { %>
+                      <% if(category.id === updateArticle.categoriaId) { %>
+                        <option value="<%= category.id %>" selected>
+                          <%= category.title %>
+                        </option>
+                      <% } else {%>
+                        <option value="<%= category.id %>">
+                          <%= category.title %>
+                        </option>
+                      <% } %>
+                     
+                    <% })%>
+                  </select>
+
+                  <label for="body">Texto</label>
+                  <textarea class="form-control mb-4" name="body" id="mytextarea" cols="30" rows="10"
+                    placeholder="Escreve o seu artigo aqui.">
+                <%= updateArticle.body %>
+                </textarea>
+
+                  <button type="submit" class="btn btn-success mt-4">Atualizar</button>
+                </form>
+              </div>
+            </div>
+            <% } %>
       </section>
 
   </body>

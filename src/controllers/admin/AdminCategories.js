@@ -13,9 +13,11 @@ const AdminCategories = {
       CategoryModel.create({
         title,
         slug: Slugify(title, { lower: true })
-      }).then(() => {
-        res.redirect('/admin/categories/')
       })
+        .then(() => {
+          res.redirect('/admin/categories/')
+        })
+
     } else {
       res.redirect('/admin/categories/new.ejs')
 
@@ -54,9 +56,7 @@ const AdminCategories = {
 
       //Atualiza uma informacao no banco de dados:
       CategoryModel.update({ title, slug: Slugify(title, { lower: true }) }, {
-        where: {
-          id,
-        }
+        where: { id }
       })
         .then(() => res.redirect('/admin/categories'))
         .catch(err => res.redirect('/admin/categories'))

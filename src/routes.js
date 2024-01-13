@@ -19,6 +19,8 @@ router.get('/admin/articles', AdminArticles.home);
 router.get('/admin/articles/new', AdminArticles.new)
 router.post('/admin/articles/save', AdminArticles.save)
 router.post('/admin/articles/delete', AdminArticles.delete)
+router.get('/admin/articles/update/:id', AdminArticles.update);
+router.post('/admin/articles/update/:id', AdminArticles.updateArticle);
 
 //Rotas Admin Categories
 router.get('/admin/categories/', AdminCategories.categories);
