@@ -69,10 +69,7 @@ const UserController = {
   },
 
   logout(req, res) {
-    req.session.user = {
-      email: false
-    }
-
+    req.session.user = null
     res.redirect('/')
   }
 }
