@@ -1,5 +1,6 @@
 const UserModel = require('@controllers/users/UserModel.js');
 const CategoryModel = require('@controllers/categories/CategoryModel');
+const bcrypt = require('bcryptjs');
 
 const UserController = {
   loginPage(req, res) {
@@ -11,18 +12,33 @@ const UserController = {
   signup(req, res) {
     const { email, password } = req.body;
 
-    UserModel.create({
-      email,
-      password,
-    })
-      .then(() => {
-        CategoryModel.findAll().then(categories => {
-          res.render('login/index', { categories })
+    UserModel.findOne({
+      where: { email }
+    }).then(user => {
+      if (!user) {
+
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(password, salt);
+
+        UserModel.create({
+          email,
+          password: hash,
         })
-      })
-      .catch(err => {
-        console.error('Nao foi possivel realizar o login.', err)
-      })
+          .then(() => {
+            CategoryModel.findAll().then(categories => {
+              res.render('login/index', { categories })
+            })
+          })
+          .catch(err => {
+            console.error('Nao foi possivel realizar o login.', err)
+          })
+
+      } else {
+        res.redirect('/signup');
+      }
+    })
+
+
   },
 
   signupPage(req, res) {
