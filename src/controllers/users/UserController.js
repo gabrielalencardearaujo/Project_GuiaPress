@@ -37,8 +37,6 @@ const UserController = {
         res.redirect('/signup');
       }
     })
-
-
   },
 
   signupPage(req, res) {
@@ -51,24 +49,31 @@ const UserController = {
     const { email, password } = req.body;
 
     UserModel.findOne({
-      where: {
-        email,
-        password
-      }
+      where: { email }
     })
       .then(user => {
 
-        CategoryModel.findAll().then(categories => {
-          if (user)
-            res.render('/', { categories })
-          else
-            res.render('login/index', { categories })
-        })
+        const compare = bcrypt.compareSync(password, user.password);
+
+        if (user && compare) {
+          req.session.user = { email }
+          res.redirect('/')
+        } else {
+          res.redirect('/login')
+        }
 
       })
       .catch(err => {
         console.error('Ocorreu um erro ao pesquisar o usuario no banco de dados', err)
       })
+  },
+
+  logout(req, res) {
+    req.session.user = {
+      email: false
+    }
+
+    res.redirect('/')
   }
 }
 

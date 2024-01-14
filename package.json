@@ -29,6 +29,7 @@
     "@app": "src/app.js",
     "@config": "src/configs",
     "@controllers": "src/controllers",
-    "@database": "database"
+    "@database": "database",
+    "@middlewares": "middlewares"
   }
 }
