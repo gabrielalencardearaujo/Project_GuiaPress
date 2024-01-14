@@ -1,0 +1,42 @@
+<%- include('../partials/head.ejs') %>
+
+<body>
+  <%- include('../partials/homenavbar.ejs') %>
+
+  </script>
+
+    <section class="container">
+      <div class="card mt-4" style="width: 400px; margin: 0 auto;">
+        <div class="card-header">
+          <h2>Faça seu login<strong class="text-primary">.</strong></h2>
+        </div>
+        <div class="card-body">
+          <form action="/login" class="form" method="POST" onsubmit="areNullInputs(event)">
+            <label for="email">Email</label>
+            <input 
+              class="form-control" 
+              type="email" 
+              name="email" 
+              id="email" 
+              required
+            >
+
+            <label for="password">Senha:</label>
+            <input 
+              class="form-control" 
+              type="password" 
+              name="password" 
+              id="password" 
+              required
+            >
+
+            <button class="btn btn-primary mt-4" type="submit">Entrar</button>
+            <a href="/signup" style="float: right;" class="btn mt-4">Cadastre-se</a>
+
+          </form>
+        </div>
+      </div>
+    </section>
+</body>
+
+<%- include('../partials/footer.ejs') %>

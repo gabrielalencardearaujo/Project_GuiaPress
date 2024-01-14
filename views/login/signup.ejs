@@ -1,0 +1,65 @@
+<%- include('../partials/head.ejs') %>
+
+<body>
+  <%- include('../partials/homenavbar.ejs') %>
+
+  </script>
+
+    <section class="container">
+      <div class="card mt-4" style="width: 400px; margin: 0 auto;">
+        <div class="card-header">
+          <h2>Faça seu Cadastro<strong class="text-primary">.</strong></h2>
+        </div>
+        <div class="card-body">
+          <form action="/signup" class="form" method="POST" onsubmit="areNullInputs(event)">
+            <label for="email">Email</label>
+            <input 
+              class="form-control" 
+              type="email" 
+              name="email" 
+              id="email" 
+              required
+            >
+
+            <label for="password" class="mt-4">Senha:</label>
+            <input 
+              class="form-control" 
+              type="password" 
+              name="password" 
+              id="password" 
+              required
+            >
+            <label for="confirmPassword" class="mt-4">Confirmar Senha:</label>
+            <input 
+              class="form-control" 
+              type="password" 
+              name="confirmPassword" 
+              id="confirmPassword" 
+              required
+            >
+
+            <p class="text-light mt-3 p-1 rounded-sm" id="errorLogin" style="background-color: rgba(255, 0, 0, 0.5);display: none;">Usuario ou senha incorretos</p>
+
+            <button class="btn btn-primary mt-4" type="submit">Cadastre-se</button>
+            <a href="/login" style="float: right;" class="btn mt-4">Login</a>
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function areNullInputs(event) {
+        event.preventDefault();
+
+        if(event.target.password.value === event.target.confirmPassword.value) {
+          event.target.submit()
+        } else {
+          document.getElementById('errorLogin').style.display = 'block'
+        }
+      }
+
+    </script>
+</body>
+
+<%- include('../partials/footer.ejs') %>

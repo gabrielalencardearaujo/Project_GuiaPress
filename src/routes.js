@@ -4,6 +4,7 @@ const CateControllers = require('@controllers/categories/CategoriesController.js
 const ArtControllers = require('@controllers/articles/ArticleController.js');
 const AdminArticles = require('@controllers/admin/AdminArticles.js');
 const AdminCategories = require('@controllers/admin/AdminCategories.js');
+const UserController = require('@controllers/users/UserController')
 
 // Routers Home
 router.get('/', HomeController.home);
@@ -13,6 +14,12 @@ router.get('/category/:slug', CateControllers.categoryPage);
 
 // Routers Articles:
 router.get('/article/:slug', ArtControllers.articlePage);
+
+// Routers User:
+router.get('/login', UserController.loginPage)
+router.post('/login', UserController.signin)
+router.get('/signup', UserController.signupPage)
+router.post('/signup', UserController.signup)
 
 // Routers Admin Articles
 router.get('/admin/articles', AdminArticles.home);
